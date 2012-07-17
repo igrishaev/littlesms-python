@@ -203,7 +203,7 @@ class Api(object):
         if self.logger:
             self.logger.info(url)
 
-        response = self.opener.fetch(url)
+        response = self.opener(url)
         data = json.loads(response)
         if self.logger:
             self.logger.info(data)
