@@ -5,8 +5,7 @@ Ivan Grishaev, 2011.
 ivan@grishaev.me
 """
 
-import sha
-import md5
+from hashlib import md5, sha1
 import urllib
 
 # Find JSON lib
@@ -175,7 +174,8 @@ class Api(object):
         values = [params[key] for key in keys]
         values.insert(0, self.user)
         values.append(self.key)
-        return md5.new(sha.new("".join(values)).hexdigest()).hexdigest()
+
+        return md5(sha1("".join(values)).hexdigest()).hexdigest()
 
     def _request(self, path, **params):
         """Make API request.
