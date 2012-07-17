@@ -204,9 +204,10 @@ class Api(object):
             self.logger.info(url)
 
         response = self.opener(url)
-        data = json.loads(response)
         if self.logger:
-            self.logger.info(data)
+            self.logger.info(response)
+
+        data = json.loads(response)
 
         if data["status"] == u"error":
             raise ApiError(data["error"], data["message"])
