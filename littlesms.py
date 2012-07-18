@@ -26,7 +26,7 @@ API_URL = "%s://littlesms.ru/api/%s"
 
 def urllib_opener():
     def opener(url):
-        return urllib.urlretrieve(url)
+        return urllib.urlopen(url).read()
     return opener
 
 
